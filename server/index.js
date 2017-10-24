@@ -1,18 +1,13 @@
-/*Common Js */
+const express = require("express");
+const handler = require("./httpHandler")
+const gameController = require("./gameController");
 
-//const --- constant variable, use whenever possible
-const http = require("express");
-const handler = require("./httpHandler.js")
+const server = express();
 
-const server = http();
-
-server.use("/json", function(req, res, next){
-    res.send({ happy: "Yom Kuppur"});
-    next();
-});
-
+server.use("/client", express.static("./jquery-mockup"));
 server.use("/old", handler.main);
+server.use("/game", gameController.router);
 
 server.listen(3000);
 
-console.log("http://localhost:3000");
+console.log("running http://localhost:3000");
