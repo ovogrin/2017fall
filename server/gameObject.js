@@ -1,20 +1,21 @@
+const quotes = require("./quotes");
+
 let iCurrentPicture = 0;
 let iCurrentQuote = 0;
 
 const game = {
     pictures: [
-        "http://tse4.mm.bing.net/th?id=ORT.TH_470633631&pid=1.12&eid=G.470633631",
-        "https://www.w3schools.com/css/trolltunga.jpg"
+        "https://media4.s-nbcnews.com/j/newscms/2017_07/1903576/170215-chicken-farm-mn-1630_c65475166849611a3c0207983317eab4.nbcnews-ux-320-320.jpg",
+        "https://media4.s-nbcnews.com/j/newscms/2017_03/1870136/gettyimages-458409394_71637639157329f7cb319a3e895e2860.nbcnews-ux-320-320.jpg"
     ],
-    getNextPicture: () => game.pictures[iCurrentPicture++],
-    quotes: [
-        { text: "Get me out of here"},
-        { text: "They're just fine"},
-        { text: "Anywhere but Hasbrouck"},
-    ],
+    getNextPicture: ()=> game.pictures[iCurrentPicture++],
+    quotes: quotes,
+    getNextQuote: ()=> game.quotes[(iCurrentQuote = (iCurrentQuote + 1) % game.quotes.length)],    
     room: {
         picture: "",
-        quotes: []
+        quotes: [{ text: "Start", player: "Start", chosen: true}],
+        players: [],
+        dealer: 0
     }
 
 }
