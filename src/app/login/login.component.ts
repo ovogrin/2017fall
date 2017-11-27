@@ -22,4 +22,9 @@ export class LoginComponent implements OnInit {
     this.game.login(this.name, this.password)
   }
 
+  loginFB(){
+    this.game.loginFB();
+  }
+
+
 }
